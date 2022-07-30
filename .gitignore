@@ -1,0 +1,7 @@
+node_modules/
+# infosec/
+# keys/
+dist/
+.env
+.rdb
+# .key
