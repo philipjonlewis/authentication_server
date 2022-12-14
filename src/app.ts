@@ -1,4 +1,5 @@
 import express, { Express, Request, Response, RequestHandler } from "express";
+
 const app: Express = express();
 
 var boolParser = require("express-query-boolean");
@@ -88,15 +89,16 @@ app.use(function (req, res, next) {
 });
 
 app.get("/", (req: Request, res: Response) => {
-  res.render("pages", { name: "philip" });
+  console.log("does not crazy");
+  res.render("pages", { name: "wilderi" });
   // res.send("authentication server server");
 });
 
-app.use("/auth", authRoutes);
+app.use("/api/auth", authRoutes);
 app.use("/forms", viewRoutes);
 
 app.get("*", (req, res) => {
-  res.send("Page does not exist");
+  res.send("Page does not ewan din");
 });
 
 app.use(customErrorMiddleware);
