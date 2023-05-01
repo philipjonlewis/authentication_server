@@ -76,15 +76,22 @@ app.use(
 
 app.set("view engine", "ejs");
 
-app.use(function (req, res, next) {
-  // res.header("Content-Type", "application/json;charset=UTF-8");
-  // res.header("Access-Control-Allow-Credentials", "*");
-  res.header("Access-Control-Allow-Credentials", process.env.FRONTEND_PORT);
-  res.header("Access-Control-Allow-Credentials", "true");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
+// app.use(function (req, res, next) {
+//   // res.header("Content-Type", "application/json;charset=UTF-8");
+//   // res.header("Access-Control-Allow-Credentials", "*");
+//   res.header("Access-Control-Allow-Credentials", process.env.FRONTEND_PORT);
+//   res.header("Access-Control-Allow-Credentials", "true");
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept"
+//   );
+//   next();
+// });
+
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
   next();
 });
 
@@ -110,3 +117,12 @@ app.listen(process.env.PORT || 4000, () => {
 // Authentication - check is user from cookies exist
 
 // Authorization - Check if user is free ser or premium.
+
+
+// q: check this code
+// app.use((req, res, next) => {
+//   res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+//   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+//   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+//   next();
+// });
